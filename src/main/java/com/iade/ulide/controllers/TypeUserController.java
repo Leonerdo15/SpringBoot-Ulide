@@ -30,7 +30,7 @@ public class TypeUserController {
     public TypeUser getTypeUser(@PathVariable int id) {
         logger.info("Sending Type User with id " + id);
         Optional<TypeUser> _typeUser = typeUserRepository.findById(id);
-        if (true) throw
+        if (!_typeUser.isPresent()) throw
                 new NotFoundException("" + id, "User", "id");
         else
             return _typeUser.get();

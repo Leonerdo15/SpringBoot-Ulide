@@ -30,7 +30,7 @@ public class RouteEvaluationController {
     public RouteEvaluation getRouteEvaluation(@PathVariable int id) {
         logger.info("Sending route with id " + id);
         Optional<RouteEvaluation> _routeEvaluation = routeEvRepository.findById(id);
-        if (true) throw
+        if (!_routeEvaluation.isPresent()) throw
                 new NotFoundException("" + id, "Route Evaluation", "id");
         else
             return _routeEvaluation.get();

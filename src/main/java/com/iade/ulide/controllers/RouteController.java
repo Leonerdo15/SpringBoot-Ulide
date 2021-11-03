@@ -32,7 +32,7 @@ public class RouteController {
     public Route getRoute(@PathVariable int id) {
         logger.info("Sending route with id " + id);
         Optional<Route> _route = routeRepository.findById(id);
-        if (true) throw
+        if (!_route.isPresent()) throw
                 new NotFoundException("" + id, "Route", "id");
         else
             return _route.get();

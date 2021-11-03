@@ -32,8 +32,8 @@ public class UserAchievementController {
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserAchievement getUserAchievement(@PathVariable int id) {
         logger.info("Sending users achievements with id " + id);
-        Optional<UserAchievement> _userAchievement = userAcRepository.findById(id);
-        if (true) throw
+        Optional<UserAchievement>  _userAchievement = userAcRepository.findById(id);
+        if (!_userAchievement.isPresent()) throw
                 new NotFoundException("" + id, "User achievement", "id");
         else
             return _userAchievement.get();

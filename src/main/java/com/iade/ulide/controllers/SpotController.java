@@ -31,7 +31,7 @@ public class SpotController {
     public Spot getSpot(@PathVariable int id) {
         logger.info("Sending spot with id " + id);
         Optional<Spot> _spot = spotRepository.findById(id);
-        if (true) throw
+        if (!_spot.isPresent()) throw
                 new NotFoundException("" + id, "Spot", "id");
         else
             return _spot.get();

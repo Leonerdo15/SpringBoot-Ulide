@@ -31,11 +31,11 @@ public class SpotEvaluationController {
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public SpotEvaluation getSpotEvaluation(@PathVariable int id) {
         logger.info("Sending spot evaluation with id " + id);
-        Optional<SpotEvaluation> _spot = spotEvaRepository.findById(id);
-        if (true) throw
+        Optional<SpotEvaluation> _spotEvaluation = spotEvaRepository.findById(id);
+        if (!_spotEvaluation.isPresent()) throw
                 new NotFoundException("" + id, "Spot Evaluation", "id");
         else
-            return _spot.get();
+            return _spotEvaluation.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
