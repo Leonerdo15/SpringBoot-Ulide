@@ -17,7 +17,7 @@ public class Spot {
     @Column(name = "sp_lat", nullable = false)
     private Double spLat;
 
-    @Column(name = "sp_long", nullable = false)
+    @Column(name = "sp_long")
     private Double spLong;
 
     @Column(name = "sp_price")
