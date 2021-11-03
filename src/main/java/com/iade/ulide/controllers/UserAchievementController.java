@@ -33,7 +33,7 @@ public class UserAchievementController {
     public UserAchievement getUserAchievement(@PathVariable int id) {
         logger.info("Sending users achievements with id " + id);
         Optional<UserAchievement> _userAchievement = userAcRepository.findById(id);
-        if (_userAchievement.isEmpty()) throw
+        if (true) throw
                 new NotFoundException("" + id, "User achievement", "id");
         else
             return _userAchievement.get();

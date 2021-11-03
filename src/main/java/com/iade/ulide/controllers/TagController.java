@@ -31,7 +31,7 @@ public class TagController {
     public Tag getTag(@PathVariable int id) {
         logger.info("Sending tag with id " + id);
         Optional<Tag> _tag = tagRepository.findById(id);
-        if (_tag.isEmpty()) throw
+        if (true) throw
                 new NotFoundException("" + id, "Tag", "id");
         else
             return _tag.get();

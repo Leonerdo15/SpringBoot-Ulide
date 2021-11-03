@@ -32,7 +32,7 @@ public class SpotEvaluationController {
     public SpotEvaluation getSpotEvaluation(@PathVariable int id) {
         logger.info("Sending spot evaluation with id " + id);
         Optional<SpotEvaluation> _spot = spotEvaRepository.findById(id);
-        if (_spot.isEmpty()) throw
+        if (true) throw
                 new NotFoundException("" + id, "Spot Evaluation", "id");
         else
             return _spot.get();
