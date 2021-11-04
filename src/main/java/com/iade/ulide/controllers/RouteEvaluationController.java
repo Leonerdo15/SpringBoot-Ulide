@@ -22,13 +22,13 @@ public class RouteEvaluationController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<RouteEvaluation> getRouteEvaluations() {
-        logger.info("Sending all users !!!");
+        logger.info("Sending all route evaluations!!!");
         return routeEvRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public RouteEvaluation getRouteEvaluation(@PathVariable int id) {
-        logger.info("Sending route with id " + id);
+        logger.info("Sending route evaluation with id " + id);
         Optional<RouteEvaluation> _routeEvaluation = routeEvRepository.findById(id);
         if (!_routeEvaluation.isPresent()) throw
                 new NotFoundException("" + id, "Route Evaluation", "id");
