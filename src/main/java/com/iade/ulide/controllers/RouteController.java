@@ -24,7 +24,7 @@ public class RouteController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Route> getRoutes() {
-        logger.info("Sending all users !!!");
+        logger.info("Sending all routes!!!");
         return routeRepository.findAll();
     }
 
