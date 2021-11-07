@@ -10,7 +10,10 @@ import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.TypeUserRepository;
 
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(path = "/api/typeUsers")
