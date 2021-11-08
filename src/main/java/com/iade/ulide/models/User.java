@@ -6,8 +6,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "users")
 public class User {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "us_id", nullable = false)
@@ -33,6 +31,17 @@ public class User {
 
     @Column(name = "us_dist")
     private Integer usDist;
+
+    @Column(name = "us_tu_id")
+    private Integer usTuId;
+
+    public Integer getUsTuId() {
+        return usTuId;
+    }
+
+    public void setUsTuId(Integer usTuId) {
+        this.usTuId = usTuId;
+    }
 
     public Integer getUsDist() {
         return usDist;

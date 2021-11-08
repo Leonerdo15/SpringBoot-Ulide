@@ -5,13 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "achievements")
 public class Achievement {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ac_id", nullable = false)
     private Integer id;
 
-    @Column(name = "ac_name", length = 30)
+    @Column(name = "ac_name", nullable = false, length = 30)
     private String acName;
 
     public String getAcName() {
@@ -26,4 +25,7 @@ public class Achievement {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

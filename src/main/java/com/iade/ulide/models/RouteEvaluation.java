@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "route_evaluations")
 public class RouteEvaluation {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "re_id", nullable = false)
