@@ -1,13 +1,11 @@
 package com.iade.ulide.controllers;
 
+import com.iade.ulide.models.exceptions.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.iade.ulide.models.Route;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.repositories.RouteRepository;
@@ -24,7 +22,7 @@ public class RouteController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Route> getRoutes() {
-        logger.info("Sending all users !!!");
+        logger.info("Sending all routes!!!");
         return routeRepository.findAll();
     }
 
@@ -36,5 +34,19 @@ public class RouteController {
                 new NotFoundException("" + id, "Route", "id");
         else
             return _route.get();
+    }
+
+    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Route saveRoute(@RequestBody Route route) {
+        Route savedRoute = routeRepository.save(route);
+        logger.info("Saving route with id " + savedRoute.getId());
+        return savedRoute;
+    }
+
+    @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response deleteRoute(@PathVariable int id) {
+        logger.info("Deleting route with id " + id);
+        routeRepository.deleteById(id);
+        return new Response("Deleted route with id " + id, null);
     }
 }
