@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping(path = "/api/achievements")
 public class AchievementController {
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private AchievementRepository achievementRepository;
@@ -29,6 +31,7 @@ public class AchievementController {
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Achievement getAchievement(@PathVariable int id) {
+
         logger.info("Sending achievemt with id " + id);
         Optional<Achievement> _achievement = achievementRepository.findById(id);
         if (!_achievement.isPresent()) throw

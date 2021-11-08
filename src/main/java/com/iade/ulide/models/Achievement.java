@@ -14,17 +14,6 @@ public class Achievement {
     @Column(name = "ac_name", length = 30)
     private String acName;
 
-    @Column(name = "ac_limit")
-    private Integer acLimit;
-
-    public Integer getAcLimit() {
-        return acLimit;
-    }
-
-    public void setAcLimit(Integer acLimit) {
-        this.acLimit = acLimit;
-    }
-
     public String getAcName() {
         return acName;
     }
@@ -37,7 +26,4 @@ public class Achievement {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

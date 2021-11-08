@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "routes")
 public class Route {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rt_id", nullable = false)
