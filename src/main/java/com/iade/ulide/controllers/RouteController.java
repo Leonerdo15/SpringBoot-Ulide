@@ -1,5 +1,6 @@
 package com.iade.ulide.controllers;
 
+import com.iade.ulide.models.RouteEvaluation;
 import com.iade.ulide.models.exceptions.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,8 +46,8 @@ public class RouteController {
 
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteRoute(@PathVariable int id) {
-        logger.info("Deleting route with id " + id);
+        logger.info("Deleting route evaluation with id " + id);
         routeRepository.deleteById(id);
-        return new Response("Deleted route with id " + id, null);
+        return new Response("Deleted route evaluation with id " + id, null);
     }
 }
