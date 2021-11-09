@@ -53,7 +53,7 @@ public class SpotEvaluationController {
                 new NotFoundException("" + id, "Spot Evaluation", "id");
         else
             spotEvaRepository.deleteById(id);
-            return new Response("Deleted user with id " + id, null);
+            return new Response("Deleted spot evaluation with id " + id, null);
     }
 
 }
