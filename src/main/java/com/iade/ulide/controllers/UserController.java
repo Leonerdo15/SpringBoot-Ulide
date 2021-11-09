@@ -46,7 +46,11 @@ public class UserController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteUser(@PathVariable int id) {
         logger.info("Deleting user with id " + id);
-        userRepository.deleteById(id);
-        return new Response("Deleted user with id " + id, null);
+        Optional<User> _user = userRepository.findById(id);
+        if (!_user.isPresent()) throw
+                new NotFoundException("" + id, "User", "id");
+        else
+            userRepository.deleteById(id);
+            return new Response("Deleted user with id " + id, null);
     }
 }

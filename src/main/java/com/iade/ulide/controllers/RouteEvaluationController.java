@@ -46,7 +46,11 @@ public class RouteEvaluationController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteRouteEvaluation(@PathVariable int id) {
         logger.info("Deleting route evaluation with id " + id);
-        routeEvRepository.deleteById(id);
-        return new Response("Deleted route evaluation with id " + id, null);
+        Optional<RouteEvaluation> _routeEvaluation = routeEvRepository.findById(id);
+        if (!_routeEvaluation.isPresent()) throw
+                new NotFoundException("" + id, "Route Evaluation", "id");
+        else
+            routeEvRepository.deleteById(id);
+            return new Response("Deleted route evaluation with id " + id, null);
     }
 }

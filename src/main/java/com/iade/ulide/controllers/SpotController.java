@@ -47,8 +47,12 @@ public class SpotController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteSpot(@PathVariable int id) {
         logger.info("Deleting spot with id " + id);
-        spotRepository.deleteById(id);
-        return new Response("Deleted spot with id " + id, null);
+        Optional<Spot> _spot = spotRepository.findById(id);
+        if (!_spot.isPresent()) throw
+                new NotFoundException("" + id, "Spot", "id");
+        else
+            spotRepository.deleteById(id);
+            return new Response("Deleted spot with id " + id, null);
     }
 
 }

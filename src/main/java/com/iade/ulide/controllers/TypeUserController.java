@@ -49,7 +49,11 @@ public class TypeUserController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteTypeUser(@PathVariable int id) {
         logger.info("Deleting type user with id " + id);
-        typeUserRepository.deleteById(id);
-        return new Response("Deleted type user with id " + id, null);
+        Optional<TypeUser> _typeUser = typeUserRepository.findById(id);
+        if (!_typeUser.isPresent()) throw
+                new NotFoundException("" + id, "User", "id");
+        else
+            typeUserRepository.deleteById(id);
+            return new Response("Deleted type user with id " + id, null);
     }
 }

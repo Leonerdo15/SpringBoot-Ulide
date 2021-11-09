@@ -50,7 +50,11 @@ public class AchievementController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteAchievment(@PathVariable int id) {
         logger.info("Deleting achievement with id " + id);
-        achievementRepository.deleteById(id);
-        return new Response("Deleted achievement with id " + id, null);
+        Optional<Achievement> _achievement = achievementRepository.findById(id);
+        if (!_achievement.isPresent()) throw
+                new NotFoundException("" + id, "Achievement", "id");
+        else
+            achievementRepository.deleteById(id);
+            return new Response("Deleted achievement with id " + id, null);
     }
 }

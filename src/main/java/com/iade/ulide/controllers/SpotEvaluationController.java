@@ -48,8 +48,12 @@ public class SpotEvaluationController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteSpotEvaluation(@PathVariable int id) {
         logger.info("Deleting spot evaluation with id " + id);
-        spotEvaRepository.deleteById(id);
-        return new Response("Deleted user with id " + id, null);
+        Optional<SpotEvaluation> _spotEvaluation = spotEvaRepository.findById(id);
+        if (!_spotEvaluation.isPresent()) throw
+                new NotFoundException("" + id, "Spot Evaluation", "id");
+        else
+            spotEvaRepository.deleteById(id);
+            return new Response("Deleted user with id " + id, null);
     }
 
 }

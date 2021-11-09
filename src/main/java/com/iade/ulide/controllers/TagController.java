@@ -47,7 +47,11 @@ public class TagController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteTag(@PathVariable int id) {
         logger.info("Deleting tag with id " + id);
-        tagRepository.deleteById(id);
-        return new Response("Deleted tag with id " + id, null);
+        Optional<Tag> _tag = tagRepository.findById(id);
+        if (!_tag.isPresent()) throw
+                new NotFoundException("" + id, "Tag", "id");
+        else
+            tagRepository.deleteById(id);
+            return new Response("Deleted tag with id " + id, null);
     }
 }

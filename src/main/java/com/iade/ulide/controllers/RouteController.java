@@ -46,7 +46,11 @@ public class RouteController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteRoute(@PathVariable int id) {
         logger.info("Deleting route with id " + id);
-        routeRepository.deleteById(id);
-        return new Response("Deleted route with id " + id, null);
+        Optional<Route> _route = routeRepository.findById(id);
+        if (!_route.isPresent()) throw
+                new NotFoundException("" + id, "Route", "id");
+        else
+            routeRepository.deleteById(id);
+            return new Response("Deleted route with id " + id, null);
     }
 }

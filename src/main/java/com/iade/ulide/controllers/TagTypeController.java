@@ -49,7 +49,11 @@ public class TagTypeController {
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteTypeUser(@PathVariable int id) {
         logger.info("Deleting Tag Type with id " + id);
-        tagTypeRepository.deleteById(id);
-        return new Response("Deleted TagType with id " + id, null);
+        Optional<TagType> _tagType = tagTypeRepository.findById(id);
+        if (!_tagType.isPresent()) throw
+                new NotFoundException("" + id, "User", "id");
+        else
+            tagTypeRepository.deleteById(id);
+            return new Response("Deleted TagType with id " + id, null);
     }
 }
