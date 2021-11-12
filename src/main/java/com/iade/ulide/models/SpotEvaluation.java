@@ -16,26 +16,28 @@ public class SpotEvaluation {
     @Column(name = "se_comment", length = 400)
     private String seComment;
 
-    @Column(name = "se_us_id", nullable = false)
-    private Integer seUsId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "se_us_id", nullable = false)
+    private User seUs;
 
-    @Column(name = "se_sp_id", nullable = false)
-    private Integer seSpId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "se_sp_id", nullable = false)
+    private Spot seSp;
 
-    public Integer getSeSpId() {
-        return seSpId;
+    public Spot getSeSp() {
+        return seSp;
     }
 
-    public void setSeSpId(Integer seSpId) {
-        this.seSpId = seSpId;
+    public void setSeSp(Spot seSp) {
+        this.seSp = seSp;
     }
 
-    public Integer getSeUsId() {
-        return seUsId;
+    public User getSeUs() {
+        return seUs;
     }
 
-    public void setSeUsId(Integer seUsId) {
-        this.seUsId = seUsId;
+    public void setSeUs(User seUs) {
+        this.seUs = seUs;
     }
 
     public String getSeComment() {

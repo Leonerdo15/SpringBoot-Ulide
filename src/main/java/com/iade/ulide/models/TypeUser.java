@@ -10,7 +10,7 @@ public class TypeUser {
     @Column(name = "tu_id", nullable = false)
     private Integer id;
 
-    @Column(name = "tu_name", length = 30)
+    @Column(name = "tu_name", nullable = false, length = 30)
     private String tuName;
 
     public String getTuName() {

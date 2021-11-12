@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "route_evaluations")
 public class RouteEvaluation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "re_id", nullable = false)
@@ -16,26 +17,28 @@ public class RouteEvaluation {
     @Column(name = "re_comment", length = 400)
     private String reComment;
 
-    @Column(name = "re_us_id", nullable = false)
-    private Integer reUsId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "re_us_id", nullable = false)
+    private User reUs;
 
-    @Column(name = "re_rt_id", nullable = false)
-    private Integer reRtId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "re_rt_id", nullable = false)
+    private Route reRt;
 
-    public Integer getReRtId() {
-        return reRtId;
+    public Route getReRt() {
+        return reRt;
     }
 
-    public void setReRtId(Integer reRtId) {
-        this.reRtId = reRtId;
+    public void setReRt(Route reRt) {
+        this.reRt = reRt;
     }
 
-    public Integer getReUsId() {
-        return reUsId;
+    public User getReUs() {
+        return reUs;
     }
 
-    public void setReUsId(Integer reUsId) {
-        this.reUsId = reUsId;
+    public void setReUs(User reUs) {
+        this.reUs = reUs;
     }
 
     public String getReComment() {

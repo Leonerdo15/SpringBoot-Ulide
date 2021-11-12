@@ -6,35 +6,36 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "user_achievements")
 public class UserAchievement {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ua_id", nullable = false)
+    @Column(name = "ua_id")
     private Integer id;
 
     @Column(name = "ua_date")
     private LocalDate uaDate;
 
-    @Column(name = "ua_us_id", nullable = false)
-    private Integer uaUsId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ua_us_id", nullable = false)
+    private User uaUs;
 
-    @Column(name = "ua_ac_id", nullable = false)
-    private Integer uaAcId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ua_ac_id", nullable = false)
+    private Achievement uaAc;
 
-    public Integer getUaAcId() {
-        return uaAcId;
+    public Achievement getUaAc() {
+        return uaAc;
     }
 
-    public void setUaAcId(Integer uaAcId) {
-        this.uaAcId = uaAcId;
+    public void setUaAc(Achievement uaAc) {
+        this.uaAc = uaAc;
     }
 
-    public Integer getUaUsId() {
-        return uaUsId;
+    public User getUaUs() {
+        return uaUs;
     }
 
-    public void setUaUsId(Integer uaUsId) {
-        this.uaUsId = uaUsId;
+    public void setUaUs(User uaUs) {
+        this.uaUs = uaUs;
     }
 
     public LocalDate getUaDate() {

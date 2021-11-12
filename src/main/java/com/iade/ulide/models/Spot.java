@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "spots")
 public class Spot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sp_id", nullable = false)
@@ -16,7 +17,7 @@ public class Spot {
     @Column(name = "sp_lat", nullable = false)
     private Double spLat;
 
-    @Column(name = "sp_long")
+    @Column(name = "sp_long", nullable = false)
     private Double spLong;
 
     @Column(name = "sp_price")

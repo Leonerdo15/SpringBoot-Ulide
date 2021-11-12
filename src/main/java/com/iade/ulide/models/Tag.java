@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tags")
 public class Tag {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tg_id", nullable = false)
@@ -13,15 +14,16 @@ public class Tag {
     @Column(name = "tg_name", nullable = false, length = 30)
     private String tgName;
 
-    @Column(name = "tg_tt_id", nullable = false)
-    private Integer tgTtId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "tg_tt_id", nullable = false)
+    private TagType tgTt;
 
-    public Integer getTgTtId() {
-        return tgTtId;
+    public TagType getTgTt() {
+        return tgTt;
     }
 
-    public void setTgTtId(Integer tgTtId) {
-        this.tgTtId = tgTtId;
+    public void setTgTt(TagType tgTt) {
+        this.tgTt = tgTt;
     }
 
     public String getTgName() {

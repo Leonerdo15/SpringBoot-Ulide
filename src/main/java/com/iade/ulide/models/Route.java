@@ -5,12 +5,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "routes")
 public class Route {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rt_id", nullable = false)
     private Integer id;
 
-    @Column(name = "rt_name", length = 60)
+    @Column(name = "rt_name", nullable = false, length = 60)
     private String rtName;
 
     @Column(name = "rt_bio", length = 400)

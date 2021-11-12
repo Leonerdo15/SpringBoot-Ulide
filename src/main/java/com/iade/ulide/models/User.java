@@ -32,15 +32,16 @@ public class User {
     @Column(name = "us_dist")
     private Integer usDist;
 
-    @Column(name = "us_tu_id")
-    private Integer usTuId;
+    @ManyToOne
+    @JoinColumn(name = "us_tu_id")
+    private TypeUser usTu;
 
-    public Integer getUsTuId() {
-        return usTuId;
+    public TypeUser getUsTu() {
+        return usTu;
     }
 
-    public void setUsTuId(Integer usTuId) {
-        this.usTuId = usTuId;
+    public void setUsTu(TypeUser usTu) {
+        this.usTu = usTu;
     }
 
     public Integer getUsDist() {
