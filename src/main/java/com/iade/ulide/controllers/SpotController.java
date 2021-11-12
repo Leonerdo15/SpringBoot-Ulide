@@ -11,6 +11,7 @@ import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -57,9 +58,20 @@ public class SpotController {
     }
 
     @GetMapping(path = "/{id:[0-9]+}/average", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Double> averageSpots(@PathVariable int id) {
-        logger.info("Getting average of all spots");
-        return spotRepository.spotsAverage(id);
+    public Iterable<Double> averageSpot(@PathVariable int id) {
+        logger.info("Getting average form spot id: " + id);
+        return spotRepository.spotAverage(id);
     }
 
+    @GetMapping(path = "/bio/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getSpotBioById(@PathVariable int id) {
+        logger.info("Sending bio from spot id: " + id);
+        return spotRepository.findSpBioById(id);
+    }
+
+    @GetMapping(path = "/comments/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<List<String>> getSpotComments(@PathVariable int id) {
+        logger.info("Sending all comments from spot id: " + id);
+        return spotRepository.findAllSpotComments(id);
+    }
 }
