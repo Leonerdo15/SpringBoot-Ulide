@@ -10,6 +10,7 @@ import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotRepository;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 
@@ -53,6 +54,12 @@ public class SpotController {
         else
             spotRepository.deleteById(id);
             return new Response("Deleted spot with id " + id, null);
+    }
+
+    @GetMapping(path = "/{id:[0-9]+}/average", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Double> averageSpots(@PathVariable int id) {
+        logger.info("Getting average of all spots");
+        return spotRepository.spotsAverage(id);
     }
 
 }
