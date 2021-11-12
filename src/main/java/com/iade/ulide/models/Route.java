@@ -8,13 +8,13 @@ public class Route {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rt_id", nullable = false)
+    @Column(name = "rt_id")
     private Integer id;
 
-    @Column(name = "rt_name", nullable = false, length = 60)
+    @Column(name = "rt_name")
     private String rtName;
 
-    @Column(name = "rt_bio", length = 400)
+    @Column(name = "rt_bio")
     private String rtBio;
 
     @Column(name = "rt_dist")

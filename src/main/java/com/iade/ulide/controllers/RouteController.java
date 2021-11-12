@@ -59,4 +59,24 @@ public class RouteController {
         logger.info("Sending all Popular routes order!!!");
         return routeRepository.findAllRoutesSortedByPopularaty();
     }
+
+    @GetMapping(path = "/bio/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Route> getRouteBioById(@PathVariable int id) {
+        logger.info("Sending bio from route id: " + id);
+        return routeRepository.findRtBioById(id);
+    }
+
+    @GetMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Route> searchRoutes(@RequestParam(value = "name", defaultValue = "") String name,
+                                        @RequestParam(value = "distMin", defaultValue = "min") String distMin,
+                                        @RequestParam(value = "distMax", defaultValue = "max") String distMax) {
+        logger.info("Sending routes with name like "+name+ "and distance between " +distMin+ " and " +distMax);
+        double _distMin = 0;
+        double _distMax = Double.MAX_VALUE;
+        try { _distMin = Double.parseDouble(distMin); }
+        catch (NumberFormatException e) {}
+        try { _distMax = Double.parseDouble(distMax); }
+        catch (NumberFormatException e) {}
+        return routeRepository.findByRtNameContainingAndRtDistBetween(name, _distMin, _distMax);
+    }
 }
