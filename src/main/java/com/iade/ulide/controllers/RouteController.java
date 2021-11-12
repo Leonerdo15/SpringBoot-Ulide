@@ -55,13 +55,13 @@ public class RouteController {
     }
 
     @GetMapping(path = "/popular", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Route> getAllRoutesByPopularaty() {
+    public Iterable<Route> getAllRoutesByPopularity() {
         logger.info("Sending all Popular routes order!!!");
-        return routeRepository.findAllRoutesSortedByPopularaty();
+        return routeRepository.findAllRoutesSortedByPopularity();
     }
 
     @GetMapping(path = "/bio/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Route> getRouteBioById(@PathVariable int id) {
+    public Iterable<String> getRouteBioById(@PathVariable int id) {
         logger.info("Sending bio from route id: " + id);
         return routeRepository.findRtBioById(id);
     }
