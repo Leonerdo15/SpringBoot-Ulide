@@ -51,7 +51,7 @@ public class TagTypeController {
         logger.info("Deleting Tag Type with id " + id);
         Optional<TagType> _tagType = tagTypeRepository.findById(id);
         if (!_tagType.isPresent()) throw
-                new NotFoundException("" + id, "User", "id");
+                new NotFoundException("" + id, "TagType", "id");
         else
             tagTypeRepository.deleteById(id);
             return new Response("Deleted TagType with id " + id, null);

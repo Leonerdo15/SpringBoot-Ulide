@@ -51,7 +51,7 @@ public class TypeUserController {
         logger.info("Deleting type user with id " + id);
         Optional<TypeUser> _typeUser = typeUserRepository.findById(id);
         if (!_typeUser.isPresent()) throw
-                new NotFoundException("" + id, "User", "id");
+                new NotFoundException("" + id, "Type user", "id");
         else
             typeUserRepository.deleteById(id);
             return new Response("Deleted type user with id " + id, null);
