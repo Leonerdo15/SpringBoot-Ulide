@@ -57,4 +57,11 @@ public class UserAchievementController {
             return new Response("Deleted user achievement with id " + id, null);
     }
 
+    //Mudar istto com a materia do ?user=2
+    @GetMapping(path = "user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<UserAchievement> getAllUserAchievementsByUaUsId(@PathVariable int id) {
+        logger.info("Sending all users achievements !!!");
+        return userAcRepository.findUserAchievementsByUaUsId2(id);
+
+    }
 }

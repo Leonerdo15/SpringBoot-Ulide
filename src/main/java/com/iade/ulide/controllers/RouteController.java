@@ -53,4 +53,10 @@ public class RouteController {
             routeRepository.deleteById(id);
             return new Response("Deleted route with id " + id, null);
     }
+
+    @GetMapping(path = "/popular", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Route> getAllRoutesByPopularaty() {
+        logger.info("Sending all Popular routes order!!!");
+        return routeRepository.findAllRoutesSortedByPopularaty();
+    }
 }
