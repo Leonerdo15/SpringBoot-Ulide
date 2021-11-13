@@ -3,6 +3,7 @@ package com.iade.ulide.controllers;
 import com.iade.ulide.models.Spot;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotRepository;
+import com.iade.ulide.models.views.RouteView;
 import com.iade.ulide.models.weak.RoutesSpots;
 import com.iade.ulide.models.weak.repositories.RoutesSpotsRepository;
 import org.slf4j.Logger;
@@ -99,5 +100,11 @@ public class RouteController {
     public Iterable<Spot> findSpotsRoute(@PathVariable int id) {
         logger.info("Sending alls spots with route id " + id);
         return spotRepository.findRouteSpots(id);
+    }
+
+    @GetMapping(path = "/avg", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<RouteView> allRouteAvg() {
+        logger.info("Sending the average of the all routes");
+        return routeRepository.avgAllRoutes();
     }
 }

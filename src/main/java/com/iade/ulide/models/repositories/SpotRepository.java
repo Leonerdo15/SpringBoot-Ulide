@@ -1,6 +1,7 @@
 package com.iade.ulide.models.repositories;
 
 import com.iade.ulide.models.Spot;
+import com.iade.ulide.models.views.SpotView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,8 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface SpotRepository extends CrudRepository<Spot, Integer> {
+    String QueryAvgAllSpots = "select sp_name as spName, se_sp_id as id, avg(se_rate) as spAvg\n" +
+            "from spot_evaluations inner join spots on se_sp_id = sp_id\n" +
+            "group by sp_name, se_sp_id order by spAvg desc";
 
-    @Query(value = "select avg(se_rate) from users inner join spot_evaluations on us_id = se_us_id inner join spots on sp_id = se_sp_id where sp_id = :id", nativeQuery = true)
+    @Query(value = "select avg(se_rate) from spot_evaluations where sp_id = :id", nativeQuery = true)
     Iterable<Double> spotAverage(int id);
 
     @Query(value = "select sp_bio from spots where sp_id = :id", nativeQuery = true)
@@ -20,4 +24,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
 
     @Query(value = "select * from routes inner join route_spots on rt_id = rs_rt_id inner join spots on sp_id = rs_sp_id where rs_rt_id = :id", nativeQuery = true)
     Iterable<Spot> findRouteSpots(int id);
+
+    @Query(value = QueryAvgAllSpots, nativeQuery = true)
+    Iterable<SpotView> avgAllSpots();
 }

@@ -5,6 +5,7 @@ import com.iade.ulide.models.weak.RoutesSpots;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+// Not in use
 public interface RoutesSpotsRepository extends CrudRepository<RoutesSpots, Integer> {
     Iterable<RoutesSpots> findByRsRtId(int id);
 

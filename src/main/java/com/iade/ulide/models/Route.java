@@ -20,6 +20,8 @@ public class Route {
     @Column(name = "rt_dist")
     private Double rtDist;
 
+    private double avg;
+
     public Double getRtDist() {
         return rtDist;
     }
@@ -50,5 +52,9 @@ public class Route {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public double getRtAvg() {
+        return avg;
     }
 }

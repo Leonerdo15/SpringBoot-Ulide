@@ -1,5 +1,7 @@
 package com.iade.ulide.controllers;
 
+import com.iade.ulide.models.views.RouteView;
+import com.iade.ulide.models.views.SpotView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +75,11 @@ public class SpotController {
     public Iterable<List<String>> getSpotComments(@PathVariable int id) {
         logger.info("Sending all comments from spot id: " + id);
         return spotRepository.findAllSpotComments(id);
+    }
+
+    @GetMapping(path = "/avg", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<SpotView> allSpotsAvg() {
+        logger.info("Sending the average of all spots");
+        return spotRepository.avgAllSpots();
     }
 }
