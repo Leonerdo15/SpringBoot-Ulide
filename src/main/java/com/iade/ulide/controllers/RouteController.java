@@ -1,6 +1,10 @@
 package com.iade.ulide.controllers;
 
+import com.iade.ulide.models.Spot;
 import com.iade.ulide.models.exceptions.Response;
+import com.iade.ulide.models.repositories.SpotRepository;
+import com.iade.ulide.models.weak.RoutesSpots;
+import com.iade.ulide.models.weak.repositories.RoutesSpotsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,12 @@ public class RouteController {
 
     @Autowired
     private RouteRepository routeRepository;
+
+    @Autowired
+    private RoutesSpotsRepository routesSpotsRepository;
+
+    @Autowired
+    private SpotRepository spotRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Route> getRoutes() {
@@ -78,5 +88,16 @@ public class RouteController {
         try { _distMax = Double.parseDouble(distMax); }
         catch (NumberFormatException e) {}
         return routeRepository.findByRtNameContainingAndRtDistBetween(name, _distMin, _distMax);
+    }
+
+    @GetMapping(path = "/spots", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<RoutesSpots> AllSpotsRoutes(){
+        return routesSpotsRepository.findAll();
+    }
+
+    @GetMapping(path = "/{id:[0-9]+}/spots", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Spot> findSpotsRoute(@PathVariable int id) {
+        logger.info("Sending alls spots with route id " + id);
+        return spotRepository.findRouteSpots(id);
     }
 }

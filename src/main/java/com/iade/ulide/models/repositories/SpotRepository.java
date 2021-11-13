@@ -17,4 +17,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
 
     @Query(value = "select se_comment from spot_evaluations where se_sp_id = :id", nativeQuery = true)
     Iterable<List<String>> findAllSpotComments(int id);
+
+    @Query(value = "select * from routes inner join route_spots on rt_id = rs_rt_id inner join spots on sp_id = rs_sp_id where rs_rt_id = :id", nativeQuery = true)
+    Iterable<Spot> findRouteSpots(int id);
 }
