@@ -65,6 +65,7 @@ public class RouteController {
             return new Response("Deleted route with id " + id, null);
     }
 
+    // Not working
     @GetMapping(path = "/popular", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Route> getAllRoutesByPopularity() {
         logger.info("Sending all Popular routes order!!!");

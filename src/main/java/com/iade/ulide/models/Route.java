@@ -8,19 +8,17 @@ public class Route {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rt_id")
+    @Column(name = "rt_id", nullable = false)
     private Integer id;
 
-    @Column(name = "rt_name")
+    @Column(name = "rt_name", nullable = false, length = 60)
     private String rtName;
 
-    @Column(name = "rt_bio")
+    @Column(name = "rt_bio", length = 400)
     private String rtBio;
 
     @Column(name = "rt_dist")
     private Double rtDist;
-
-    private double avg;
 
     public Double getRtDist() {
         return rtDist;
@@ -52,9 +50,5 @@ public class Route {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public double getRtAvg() {
-        return avg;
     }
 }
