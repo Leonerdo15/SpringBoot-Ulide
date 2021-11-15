@@ -13,7 +13,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
             "from spot_evaluations inner join spots on se_sp_id = sp_id\n" +
             "group by sp_name, se_sp_id order by spAvg desc";
 
-    @Query(value = "select avg(se_rate) from spot_evaluations where sp_id = :id", nativeQuery = true)
+    @Query(value = "select avg(se_rate) from spot_evaluations where se_sp_id = :id", nativeQuery = true)
     Iterable<Double> spotAverage(int id);
 
     @Query(value = "select sp_bio from spots where sp_id = :id", nativeQuery = true)
