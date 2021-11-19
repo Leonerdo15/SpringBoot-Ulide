@@ -4,7 +4,7 @@ import com.iade.ulide.models.Route;
 import com.iade.ulide.models.views.RouteView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
+//😊😂🙌😎🤞🎂
 public interface RouteRepository extends CrudRepository<Route, Integer> {
 
     String QueryAvgAllRoutes = "select rt_name as rtName, re_rt_id as id, avg(re_rate) as rtAvg\n" +

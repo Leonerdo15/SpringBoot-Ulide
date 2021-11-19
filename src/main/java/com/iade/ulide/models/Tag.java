@@ -14,7 +14,7 @@ public class Tag {
     @Column(name = "tg_name", nullable = false, length = 30)
     private String tgName;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "tg_tt_id", nullable = false)
     private TagType tgTt;
 

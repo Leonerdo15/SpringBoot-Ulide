@@ -14,11 +14,11 @@ public class UserAchievement {
     @Column(name = "ua_date")
     private LocalDate uaDate;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "ua_us_id", nullable = false)
     private User uaUs;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "ua_ac_id", nullable = false)
     private Achievement uaAc;
 

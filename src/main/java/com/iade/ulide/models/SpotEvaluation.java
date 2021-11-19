@@ -16,11 +16,11 @@ public class SpotEvaluation {
     @Column(name = "se_comment", length = 400)
     private String seComment;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "se_us_id", nullable = false)
     private User seUs;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "se_sp_id", nullable = false)
     private Spot seSp;
 

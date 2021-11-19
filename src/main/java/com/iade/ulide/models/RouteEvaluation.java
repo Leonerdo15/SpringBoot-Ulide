@@ -17,11 +17,11 @@ public class RouteEvaluation {
     @Column(name = "re_comment", length = 400)
     private String reComment;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "re_us_id", nullable = false)
     private User reUs;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "re_rt_id", nullable = false)
     private Route reRt;
 
