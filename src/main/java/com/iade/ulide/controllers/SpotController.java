@@ -1,6 +1,5 @@
 package com.iade.ulide.controllers;
 
-import com.iade.ulide.models.views.RouteView;
 import com.iade.ulide.models.views.SpotView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,6 @@ import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotRepository;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
