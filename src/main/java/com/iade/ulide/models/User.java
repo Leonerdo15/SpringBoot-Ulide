@@ -6,6 +6,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "us_id", nullable = false)
@@ -35,6 +36,28 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "us_tu_id")
     private TypeUser usTu;
+
+    @Column(name = "us_username", nullable = false, length = 20)
+    private String usUsername;
+
+    @Column(name = "us_password", nullable = false, length = 60)
+    private String usPassword;
+
+    public String getUsPassword() {
+        return usPassword;
+    }
+
+    public void setUsPassword(String usPassword) {
+        this.usPassword = usPassword;
+    }
+
+    public String getUsUsername() {
+        return usUsername;
+    }
+
+    public void setUsUsername(String usUsername) {
+        this.usUsername = usUsername;
+    }
 
     public TypeUser getUsTu() {
         return usTu;

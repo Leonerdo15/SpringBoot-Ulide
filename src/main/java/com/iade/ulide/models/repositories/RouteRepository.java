@@ -13,7 +13,7 @@ public interface RouteRepository extends CrudRepository<Route, Integer> {
 
     // show the routes from the most popular to the least
     // The popularity of a route is calculated by the amount of favorites
-    @Query(value = "select rt_name from routes, fav_routes where fr_rt_id = rt_id group by rt_name order by count(fr_rt_id) desc", nativeQuery = true)
+    @Query(value = "select * from routes, fav_routes where fr_rt_id = rt_id group by rt_name, rt_id, rt_bio, rt_dist, fr_id, fr_us_id, fr_rt_id order by count(fr_rt_id) desc", nativeQuery = true)
     Iterable<Route> findAllRoutesSortedByPopularity();
 
     @Query(value = "select rt_bio from routes where rt_id = :id", nativeQuery = true)
