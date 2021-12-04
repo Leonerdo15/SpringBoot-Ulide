@@ -43,14 +43,13 @@ public class UserController {
         return savedUser;
     }
 
-    @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response deleteUser(@PathVariable int id) {
-        logger.info("Deleting user with id " + id);
-        Optional<User> _user = userRepository.findById(id);
+    @GetMapping(path = "/{username}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<User> deleteUser(@PathVariable String username, @PathVariable String password) {
+
+        Optional<User> _user = userRepository.findByUsUsernameAndUsPassword(username, password);
         if (!_user.isPresent()) throw
-                new NotFoundException("" + id, "User", "id");
+                new NotFoundException("" + username + ". " + password, "User", "username or password:");
         else
-            userRepository.deleteById(id);
-            return new Response("Deleted user with id " + id, null);
+            return userRepository.findByUsUsernameAndUsPassword(username, password);
     }
 }
