@@ -115,7 +115,7 @@ public class RouteController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<List<Route>> findFavRouteByUserId(@PathVariable int id) {
+    public Iterable<String> findFavRouteByUserId(@PathVariable int id) {
         logger.info("Sending favorite route by user id" + id);
         return favRouteRepository.findFavRouteByUserId(id);
     }
