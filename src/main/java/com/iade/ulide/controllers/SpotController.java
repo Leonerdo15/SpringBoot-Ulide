@@ -1,6 +1,7 @@
 package com.iade.ulide.controllers;
 
 import com.iade.ulide.models.views.SpotView;
+import com.iade.ulide.models.weak.repositories.FavSpotsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class SpotController {
 
     @Autowired
     private SpotRepository spotRepository;
+
+    @Autowired
+    private FavSpotsRepository favSpotRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Spot> getSpots() {
@@ -79,5 +83,11 @@ public class SpotController {
     public Iterable<SpotView> allSpotsAvg() {
         logger.info("Sending the average of all spots");
         return spotRepository.avgAllSpots();
+    }
+
+    @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Spot> findFavSpotByUserId(int id) {
+        logger.info("Sending favorite spot by user id" + id);
+        return favSpotRepository.findFavSpotByUserId(id);
     }
 }
