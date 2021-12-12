@@ -53,4 +53,10 @@ public class RouteEvaluationController {
             routeEvRepository.deleteById(id);
             return new Response("Deleted route evaluation with id " + id, null);
     }
+
+    @GetMapping(path = "/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<RouteEvaluation> findByUserId(@PathVariable int id) {
+        logger.info("Getting evaluations by user id " + id);
+        return routeEvRepository.findByUserId(id);
+    }
 }

@@ -56,4 +56,9 @@ public class SpotEvaluationController {
             return new Response("Deleted spot evaluation with id " + id, null);
     }
 
+    @GetMapping(path = "/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<SpotEvaluation> findByUserId(@PathVariable int id) {
+        logger.info("Getting evaluation by user id " + id);
+        return spotEvaRepository.findByUserId(id);
+    }
 }
