@@ -86,7 +86,7 @@ public class SpotController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Spot> findFavSpotByUserId(int id) {
+    public Iterable<Spot> findFavSpotByUserId(@PathVariable int id) {
         logger.info("Sending favorite spot by user id" + id);
         return favSpotRepository.findFavSpotByUserId(id);
     }
