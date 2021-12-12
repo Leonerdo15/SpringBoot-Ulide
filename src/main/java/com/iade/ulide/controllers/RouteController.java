@@ -16,6 +16,7 @@ import com.iade.ulide.models.Route;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.repositories.RouteRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -114,7 +115,7 @@ public class RouteController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Route> findFavRouteByUserId(@PathVariable int id) {
+    public Iterable<List<Route>> findFavRouteByUserId(@PathVariable int id) {
         logger.info("Sending favorite route by user id" + id);
         return favRouteRepository.findFavRouteByUserId(id);
     }
