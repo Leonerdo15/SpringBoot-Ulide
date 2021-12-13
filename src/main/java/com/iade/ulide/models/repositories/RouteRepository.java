@@ -23,4 +23,8 @@ public interface RouteRepository extends CrudRepository<Route, Integer> {
 
     @Query(value = QueryAvgAllRoutes, nativeQuery = true)
     Iterable<RouteView> avgAllRoutes();
+
+    @Query(value = "select rt.* from routes rt inner join fav_routes on rt_id = fr_rt_id where fr_us_id = :id",
+            nativeQuery = true)
+    Iterable<Route> findFavRouteByUserId(int id);
 }

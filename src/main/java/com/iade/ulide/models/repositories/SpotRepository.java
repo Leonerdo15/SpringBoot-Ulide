@@ -5,7 +5,6 @@ import com.iade.ulide.models.views.SpotView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface SpotRepository extends CrudRepository<Spot, Integer> {
@@ -27,4 +26,8 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
 
     @Query(value = QueryAvgAllSpots, nativeQuery = true)
     Iterable<SpotView> avgAllSpots();
+
+    @Query(value = "select sp.* from spots sp inner join fav_spots on sp_id = fs_sp_id where fs_us_id = :id",
+            nativeQuery = true)
+    Iterable<Spot> findFavSpotByUserId(int id);
 }

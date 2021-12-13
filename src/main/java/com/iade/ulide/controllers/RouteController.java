@@ -5,7 +5,6 @@ import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotRepository;
 import com.iade.ulide.models.views.RouteView;
 import com.iade.ulide.models.weak.RoutesSpots;
-import com.iade.ulide.models.weak.repositories.FavRoutesRepository;
 import com.iade.ulide.models.weak.repositories.RoutesSpotsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import com.iade.ulide.models.Route;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.repositories.RouteRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -32,9 +30,6 @@ public class RouteController {
 
     @Autowired
     private SpotRepository spotRepository;
-
-    @Autowired
-    private FavRoutesRepository favRouteRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Route> getRoutes() {
@@ -115,8 +110,8 @@ public class RouteController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> findFavRouteByUserId(@PathVariable int id) {
+    public Iterable<Route> findFavRouteByUserId(@PathVariable int id) {
         logger.info("Sending favorite route by user id" + id);
-        return favRouteRepository.findFavRouteByUserId(id);
+        return routeRepository.findFavRouteByUserId(id);
     }
 }
