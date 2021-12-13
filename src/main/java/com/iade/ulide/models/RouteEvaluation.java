@@ -17,36 +17,18 @@ public class RouteEvaluation {
     @Column(name = "re_comment", length = 400)
     private String reComment;
 
-    @ManyToOne
-    @JoinColumn(name = "re_us_id", nullable = false)
-    private User reUs;
+    @Column(name = "re_us_id")
+    private Integer reUsId;
 
-    @ManyToOne
-    @JoinColumn(name = "re_rt_id", nullable = false)
-    private Route reRt;
+    @Column(name = "re_rt_id")
+    private Integer reRtId;
 
-    public Route getReRt() {
-        return reRt;
+    public Integer getId() {
+        return id;
     }
 
-    public void setReRt(Route reRt) {
-        this.reRt = reRt;
-    }
-
-    public User getReUs() {
-        return reUs;
-    }
-
-    public void setReUs(User reUs) {
-        this.reUs = reUs;
-    }
-
-    public String getReComment() {
-        return reComment;
-    }
-
-    public void setReComment(String reComment) {
-        this.reComment = reComment;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getReRate() {
@@ -57,11 +39,27 @@ public class RouteEvaluation {
         this.reRate = reRate;
     }
 
-    public Integer getId() {
-        return id;
+    public String getReComment() {
+        return reComment;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setReComment(String reComment) {
+        this.reComment = reComment;
+    }
+
+    public Integer getReUsId() {
+        return reUsId;
+    }
+
+    public void setReUsId(Integer reUsId) {
+        this.reUsId = reUsId;
+    }
+
+    public Integer getReRtId() {
+        return reRtId;
+    }
+
+    public void setReRtId(Integer reRtId) {
+        this.reRtId = reRtId;
     }
 }

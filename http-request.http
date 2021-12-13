@@ -1,0 +1,15 @@
+###
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "usName": "tetsts",
+  "usBdate": "1997-08-30",
+  "usGender": "M",
+  "usEmail": "ce@gmail.com",
+  "usUsername": "btgt123",
+  "usPassword": "123456"
+}
+
+
+###

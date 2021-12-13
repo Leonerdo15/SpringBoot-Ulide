@@ -16,36 +16,18 @@ public class SpotEvaluation {
     @Column(name = "se_comment", length = 400)
     private String seComment;
 
-    @ManyToOne
-    @JoinColumn(name = "se_us_id", nullable = false)
-    private User seUs;
+    @Column(name = "se_us_id")
+    private Integer seUsId;
 
-    @ManyToOne
-    @JoinColumn(name = "se_sp_id", nullable = false)
-    private Spot seSp;
+    @Column(name = "se_sp_id")
+    private Integer seSpId;
 
-    public Spot getSeSp() {
-        return seSp;
+    public Integer getId() {
+        return id;
     }
 
-    public void setSeSp(Spot seSp) {
-        this.seSp = seSp;
-    }
-
-    public User getSeUs() {
-        return seUs;
-    }
-
-    public void setSeUs(User seUs) {
-        this.seUs = seUs;
-    }
-
-    public String getSeComment() {
-        return seComment;
-    }
-
-    public void setSeComment(String seComment) {
-        this.seComment = seComment;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getSeRate() {
@@ -56,11 +38,27 @@ public class SpotEvaluation {
         this.seRate = seRate;
     }
 
-    public Integer getId() {
-        return id;
+    public String getSeComment() {
+        return seComment;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSeComment(String seComment) {
+        this.seComment = seComment;
+    }
+
+    public Integer getSeUsId() {
+        return seUsId;
+    }
+
+    public void setSeUsId(Integer seUsId) {
+        this.seUsId = seUsId;
+    }
+
+    public Integer getSeSpId() {
+        return seSpId;
+    }
+
+    public void setSeSpId(Integer seSpId) {
+        this.seSpId = seSpId;
     }
 }
