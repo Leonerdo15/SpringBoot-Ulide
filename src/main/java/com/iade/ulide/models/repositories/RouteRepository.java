@@ -27,4 +27,7 @@ public interface RouteRepository extends CrudRepository<Route, Integer> {
     @Query(value = "select rt.* from routes rt inner join fav_routes on rt_id = fr_rt_id where fr_us_id = :id",
             nativeQuery = true)
     Iterable<Route> findFavRouteByUserId(int id);
+
+    @Query(value = "select * from routes inner join done_routes on rt_id = dr_rt_id where dr_us_id = :id", nativeQuery = true)
+    Iterable<Route> findDoneRoutesByUserId(int id);
 }

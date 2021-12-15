@@ -86,4 +86,10 @@ public class SpotController {
         logger.info("Sending favorite spot by user id" + id);
         return spotRepository.findFavSpotByUserId(id);
     }
+
+    @GetMapping(path = "/done/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Spot> findDoneSpotByUserId(@PathVariable int id) {
+        logger.info("Sending done spot by user id " + id);
+        return spotRepository.findDoneSpotByUserId(id);
+    }
 }

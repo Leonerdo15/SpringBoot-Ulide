@@ -114,4 +114,10 @@ public class RouteController {
         logger.info("Sending favorite route by user id" + id);
         return routeRepository.findFavRouteByUserId(id);
     }
+
+    @GetMapping(path = "/done/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Route> findDoneRoutesByUserId(@PathVariable int id) {
+        logger.info("Sending done routes by user id " + id);
+        return routeRepository.findDoneRoutesByUserId(id);
+    }
 }

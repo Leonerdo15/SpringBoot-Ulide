@@ -21,7 +21,8 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
     @Query(value = "select se_comment from spot_evaluations where se_sp_id = :id", nativeQuery = true)
     Iterable<List<String>> findAllSpotComments(int id);
 
-    @Query(value = "select * from routes inner join route_spots on rt_id = rs_rt_id inner join spots on sp_id = rs_sp_id where rs_rt_id = :id", nativeQuery = true)
+    @Query(value = "select * from routes inner join route_spots on rt_id = rs_rt_id inner join spots on sp_id = rs_sp_id where rs_rt_id = :id",
+            nativeQuery = true)
     Iterable<Spot> findRouteSpots(int id);
 
     @Query(value = QueryAvgAllSpots, nativeQuery = true)
@@ -30,4 +31,8 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
     @Query(value = "select sp.* from spots sp inner join fav_spots on sp_id = fs_sp_id where fs_us_id = :id",
             nativeQuery = true)
     Iterable<Spot> findFavSpotByUserId(int id);
+
+    @Query(value = "select * from spots inner join done_spots on sp_id = ds_sp_id where ds_us_id = :id",
+            nativeQuery = true)
+    Iterable<Spot> findDoneSpotByUserId(int id);
 }
