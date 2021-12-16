@@ -82,14 +82,20 @@ public class SpotController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Spot> findFavSpotByUserId(@PathVariable int id) {
-        logger.info("Sending favorite spot by user id" + id);
-        return spotRepository.findFavSpotByUserId(id);
+    public Iterable<Spot> findFavSpotsFromUserId(@PathVariable int id) {
+        logger.info("Sending all favorite spots from user id " + id);
+        return spotRepository.findFavSpotsFromUserId(id);
     }
 
     @GetMapping(path = "/done/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Spot> findDoneSpotByUserId(@PathVariable int id) {
-        logger.info("Sending done spot by user id " + id);
-        return spotRepository.findDoneSpotByUserId(id);
+    public Iterable<Spot> findDoneSpotsFromUserId(@PathVariable int id) {
+        logger.info("Sending all done spots from user id " + id);
+        return spotRepository.findDoneSpotsFromUserId(id);
+    }
+
+    @GetMapping(path = "/eval/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Spot> findEvalSpotsFromUserId(@PathVariable int id) {
+        logger.info("Sending all spots evaluations from user id " + id);
+        return spotRepository.findEvalSpotsFromUserId(id);
     }
 }

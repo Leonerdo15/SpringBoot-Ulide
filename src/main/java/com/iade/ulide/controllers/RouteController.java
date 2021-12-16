@@ -110,14 +110,20 @@ public class RouteController {
     }
 
     @GetMapping(path = "/fav/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Route> findFavRouteByUserId(@PathVariable int id) {
-        logger.info("Sending favorite route by user id" + id);
-        return routeRepository.findFavRouteByUserId(id);
+    public Iterable<Route> findFavRoutesFromUserId(@PathVariable int id) {
+        logger.info("Sending all favorite routes from user id" + id);
+        return routeRepository.findFavRoutesFromUserId(id);
     }
 
     @GetMapping(path = "/done/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Route> findDoneRoutesByUserId(@PathVariable int id) {
-        logger.info("Sending done routes by user id " + id);
-        return routeRepository.findDoneRoutesByUserId(id);
+    public Iterable<Route> findDoneRoutesFromUserId(@PathVariable int id) {
+        logger.info("Sending all done routes from user id " + id);
+        return routeRepository.findDoneRoutesFromUserId(id);
+    }
+
+    @GetMapping(path = "/eval/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Route> findEvalRoutesFromUserId(@PathVariable int id) {
+        logger.info("Sending all routes evaluations from user id " + id);
+        return routeRepository.findEvalRoutesFromUserId(id);
     }
 }
