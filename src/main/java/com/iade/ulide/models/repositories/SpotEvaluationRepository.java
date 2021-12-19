@@ -7,4 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface SpotEvaluationRepository extends CrudRepository<SpotEvaluation, Integer> {
     @Query(value = "select * from spot_evaluations where se_us_id = :id", nativeQuery = true)
     Iterable<SpotEvaluation> findByUserId(int id);
+
+    @Query(value = "select * from spot_evaluations where se_sp_id = :id", nativeQuery = true)
+    Iterable<SpotEvaluation> findBySpotId(int id);
 }

@@ -1,5 +1,7 @@
 package com.iade.ulide.controllers;
 
+import com.iade.ulide.models.SpotEvaluation;
+import com.iade.ulide.models.repositories.SpotEvaluationRepository;
 import com.iade.ulide.models.views.SpotView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,9 @@ public class SpotController {
 
     @Autowired
     private SpotRepository spotRepository;
+
+    @Autowired
+    private SpotEvaluationRepository spotEvaluationRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Spot> getSpots() {
@@ -97,5 +102,11 @@ public class SpotController {
     public Iterable<Spot> findEvalSpotsFromUserId(@PathVariable int id) {
         logger.info("Sending all spots evaluations from user id " + id);
         return spotRepository.findEvalSpotsFromUserId(id);
+    }
+
+    @GetMapping(path = "/{id:[0-9]+}/eval", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<SpotEvaluation> findEvalBySpotId(@PathVariable int id) {
+        logger.info("Sending all evaluations from spot id " + id);
+        return spotEvaluationRepository.findBySpotId(id);
     }
 }
