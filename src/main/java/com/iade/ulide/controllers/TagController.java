@@ -54,4 +54,16 @@ public class TagController {
             tagRepository.deleteById(id);
             return new Response("Deleted tag with id " + id, null);
     }
+
+    @GetMapping(path = "/spot/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Tag> getTagsFromSpotId(@PathVariable int id) {
+        logger.info("Getting all tags from Spot id " + id);
+        return tagRepository.getTagsFromSpotId(id);
+    }
+
+    @GetMapping(path = "/user/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Tag> getTagsFromUserId(@PathVariable int id) {
+        logger.info("Getting all tags from User id " + id);
+        return tagRepository.getTagsFromUserId(id);
+    }
 }
