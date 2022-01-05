@@ -1,12 +1,9 @@
 package com.iade.ulide.controllers;
 
-import com.iade.ulide.models.Tag;
 import com.iade.ulide.models.TagType;
-import com.iade.ulide.models.TypeUser;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.TagTypeRepository;
-import com.iade.ulide.models.repositories.TypeUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

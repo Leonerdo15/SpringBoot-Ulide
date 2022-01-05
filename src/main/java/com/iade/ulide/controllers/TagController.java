@@ -12,11 +12,10 @@ import com.iade.ulide.models.repositories.TagRepository;
 
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping(path = "/api/tags")
 public class TagController {
-    private final Logger logger = LoggerFactory.getLogger(TagRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(TagController.class);
 
     @Autowired
     private TagRepository tagRepository;

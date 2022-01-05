@@ -20,7 +20,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/routes")
 public class RouteController {
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(RouteController.class);
 
     @Autowired
     private RouteRepository routeRepository;

@@ -16,8 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/userAchievements")
 public class UserAchievementController {
-
-    private final Logger logger = LoggerFactory.getLogger(UserAchievementRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(UserAchievementController.class);
 
     @Autowired
     private UserAchievementRepository userAcRepository;

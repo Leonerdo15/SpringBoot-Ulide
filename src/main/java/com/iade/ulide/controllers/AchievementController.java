@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping(path = "/api/achievements")
 public class AchievementController {
 
 
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(AchievementController.class);
 
     @Autowired
     private AchievementRepository achievementRepository;

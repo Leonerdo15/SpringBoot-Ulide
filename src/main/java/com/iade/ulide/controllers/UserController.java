@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.iade.ulide.models.User;
 import com.iade.ulide.models.exceptions.NotFoundException;
-import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.UserRepository;
 
 import java.util.Optional;

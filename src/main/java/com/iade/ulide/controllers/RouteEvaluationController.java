@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/routesEvaluations")
 public class RouteEvaluationController {
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(RouteEvaluationController.class);
 
     @Autowired
     private RouteEvaluationRepository routeEvRepository;

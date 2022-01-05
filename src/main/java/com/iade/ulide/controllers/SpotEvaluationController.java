@@ -9,15 +9,13 @@ import com.iade.ulide.models.SpotEvaluation;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.repositories.SpotEvaluationRepository;
-import com.iade.ulide.models.repositories.TagRepository;
 
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping(path = "/api/spotsEvaluations")
 public class SpotEvaluationController {
-    private final Logger logger = LoggerFactory.getLogger(TagRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(SpotEvaluationController.class);
 
     @Autowired
     private SpotEvaluationRepository spotEvaRepository;

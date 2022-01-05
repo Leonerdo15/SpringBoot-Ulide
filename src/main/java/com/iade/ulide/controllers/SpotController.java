@@ -16,11 +16,10 @@ import com.iade.ulide.models.repositories.SpotRepository;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping(path = "/api/spots")
 public class SpotController {
-    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final Logger logger = LoggerFactory.getLogger(SpotController.class);
 
     @Autowired
     private SpotRepository spotRepository;
