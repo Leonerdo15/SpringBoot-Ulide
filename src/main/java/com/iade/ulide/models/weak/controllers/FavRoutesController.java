@@ -3,7 +3,6 @@ package com.iade.ulide.models.weak.controllers;
 import com.iade.ulide.models.exceptions.NotFoundException;
 import com.iade.ulide.models.exceptions.Response;
 import com.iade.ulide.models.weak.FavRoutes;
-import com.iade.ulide.models.weak.FavSpots;
 import com.iade.ulide.models.weak.repositories.FavRoutesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,5 +52,11 @@ public class FavRoutesController {
         else
             favRoutesRepository.deleteById(id);
         return new Response("Deleted favorite route with id " + id, null);
+    }
+
+    @GetMapping(path = "/{usId:[0-9]+}/{rtId:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer getFavRouteIdByUserAndRoute(@PathVariable int usId, @PathVariable int rtId) {
+        logger.info("Getting favorite route id by usId " + usId + "and rtId " + rtId);
+        return favRoutesRepository.getFavRouteIdByUserAndRoute(usId, rtId);
     }
 }
