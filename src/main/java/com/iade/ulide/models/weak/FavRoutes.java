@@ -14,27 +14,25 @@ public class FavRoutes {
     @Column(name = "fr_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "fr_us_id", nullable = false)
-    private User frUs;
+    @Column(name = "fr_us_id", nullable = false)
+    private Integer frUs;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "fr_rt_id", nullable = false)
-    private Route frRt;
+    @Column(name = "fr_rt_id", nullable = false)
+    private Integer frRt;
 
-    public Route getFrRt() {
+    public Integer getFrRt() {
         return frRt;
     }
 
-    public void setFrRt(Route frRt) {
+    public void setFrRt(Integer frRt) {
         this.frRt = frRt;
     }
 
-    public User getFrUs() {
+    public Integer getFrUs() {
         return frUs;
     }
 
-    public void setFrUs(User frUs) {
+    public void setFrUs(Integer frUs) {
         this.frUs = frUs;
     }
 

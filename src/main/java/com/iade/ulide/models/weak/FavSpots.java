@@ -14,27 +14,25 @@ public class FavSpots {
     @Column(name = "fs_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "fs_us_id", nullable = false)
-    private User fsUs;
+    @Column(name = "fs_us_id", nullable = false)
+    private Integer fsUs;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "fs_sp_id", nullable = false)
-    private Spot fsSp;
+    @Column(name = "fs_sp_id", nullable = false)
+    private Integer fsSp;
 
-    public Spot getFsSp() {
+    public Integer getFsSp() {
         return fsSp;
     }
 
-    public void setFsSp(Spot fsSp) {
+    public void setFsSp(Integer fsSp) {
         this.fsSp = fsSp;
     }
 
-    public User getFsUs() {
+    public Integer getFsUs() {
         return fsUs;
     }
 
-    public void setFsUs(User fsUs) {
+    public void setFsUs(Integer fsUs) {
         this.fsUs = fsUs;
     }
 
