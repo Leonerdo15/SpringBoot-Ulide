@@ -59,4 +59,15 @@ public class FavSpotsController {
         logger.info("Getting favorite spot id by usId " + usId + "and spId " + spId);
         return favSpotsRepository.getFavSpotIdByUserAndSpot(usId, spId);
     }
+
+    @DeleteMapping(path = "/del/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response delFavSpot(@PathVariable int id) {
+        logger.info("Deleting fav spot with id " + id);
+        Optional<FavSpots> _favSpot = favSpotsRepository.findById(id);
+        if (!_favSpot.isPresent()) throw
+                new NotFoundException("" + id, "Favorite Spot", "id");
+        else
+            favSpotsRepository.deleteById(id);
+        return new Response("Deleted favorite spot with id " + id, null);
+    }
 }
