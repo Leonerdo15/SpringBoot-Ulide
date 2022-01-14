@@ -4,6 +4,9 @@ import com.iade.ulide.models.Route;
 import com.iade.ulide.models.views.RouteView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
+
 //😊😂🙌😎🤞🎂
 public interface RouteRepository extends CrudRepository<Route, Integer> {
 
@@ -35,4 +38,6 @@ public interface RouteRepository extends CrudRepository<Route, Integer> {
     @Query(value = "select * from routes inner join route_evaluations on rt_id = re_rt_id where re_us_id = :id",
             nativeQuery = true)
     Iterable<Route> findEvalRoutesFromUserId(int id);
+
+    Optional<Route> findByRtName(String name);
 }

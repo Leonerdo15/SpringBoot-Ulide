@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SpotRepository extends CrudRepository<Spot, Integer> {
     String QueryAvgAllSpots = "select sp_name as spName, se_sp_id as id, avg(se_rate) as spAvg\n" +
@@ -39,4 +40,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
     @Query(value = "select * from spots inner join spot_evaluations on sp_id = se_sp_id where se_us_id = :id",
             nativeQuery = true)
     Iterable<Spot> findEvalSpotsFromUserId(int id);
+
+
+    Optional<Spot> findBySpName(String name);
 }

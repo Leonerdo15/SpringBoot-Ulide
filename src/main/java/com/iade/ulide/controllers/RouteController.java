@@ -47,6 +47,16 @@ public class RouteController {
             return _route.get();
     }
 
+    @GetMapping(path = "/name/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Route getRouteByName(@PathVariable String name) {
+        logger.info("Sending route with id " + name);
+        Optional<Route> _route = routeRepository.findByRtName(name);
+        if (!_route.isPresent()) throw
+                new NotFoundException("" + name, "Route", "id");
+        else
+            return _route.get();
+    }
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Route saveRoute(@RequestBody Route route) {
         Route savedRoute = routeRepository.save(route);

@@ -5,20 +5,21 @@ import javax.persistence.*;
 @Entity
 @Table(name = "progress_routes")
 public class ProgressRoute {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pr_id", nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "pr_us_id", nullable = false)
     private User prUs;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "pr_rt_id", nullable = false)
     private Route prRt;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "pr_sp_id", nullable = false)
     private Spot prSp;
 

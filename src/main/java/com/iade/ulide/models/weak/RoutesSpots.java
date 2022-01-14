@@ -14,29 +14,12 @@ public class RoutesSpots {
     @Column(name = "rs_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rs_rt_id", nullable = false)
-    private Route rsRt;
+    @Column(name = "rs_rt_id")
+    private Integer rsRt;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rs_sp_id", nullable = false)
-    private Spot rsSp;
 
-    public Spot getRsSp() {
-        return rsSp;
-    }
-
-    public void setRsSp(Spot rsSp) {
-        this.rsSp = rsSp;
-    }
-
-    public Route getRsRt() {
-        return rsRt;
-    }
-
-    public void setRsRt(Route rsRt) {
-        this.rsRt = rsRt;
-    }
+    @Column(name = "rs_sp_id")
+    private Integer rsSp;
 
     public Integer getId() {
         return id;
@@ -44,5 +27,21 @@ public class RoutesSpots {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getRsRt() {
+        return rsRt;
+    }
+
+    public void setRsRt(Integer rsRt) {
+        this.rsRt = rsRt;
+    }
+
+    public Integer getRsSp() {
+        return rsSp;
+    }
+
+    public void setRsSp(Integer rsSp) {
+        this.rsSp = rsSp;
     }
 }

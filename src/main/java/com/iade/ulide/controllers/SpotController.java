@@ -43,6 +43,16 @@ public class SpotController {
             return _spot.get();
     }
 
+    @GetMapping(path = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Spot getSpoBytName(@PathVariable String name) {
+        logger.info("Sending spot with id " + name);
+        Optional<Spot> _spot = spotRepository.findBySpName(name);
+        if (!_spot.isPresent()) throw
+                new NotFoundException("" + name, "Spot", "id");
+        else
+            return _spot.get();
+    }
+
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Spot saveSpot(@RequestBody Spot spot) {
         Spot savedSpot = spotRepository.save(spot);
