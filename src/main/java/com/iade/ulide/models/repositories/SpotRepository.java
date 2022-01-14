@@ -42,5 +42,6 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
     Iterable<Spot> findEvalSpotsFromUserId(int id);
 
 
-    Optional<Spot> findBySpName(String name);
+    @Query(value = "select sp_id from spots where sp_name = :name", nativeQuery = true)
+    Optional<String> findBySpName(String name);
 }

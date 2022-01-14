@@ -44,13 +44,10 @@ public class SpotController {
     }
 
     @GetMapping(path = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Spot getSpoBytName(@PathVariable String name) {
+    public String getSpoBytName(@PathVariable String name) {
         logger.info("Sending spot with id " + name);
-        Optional<Spot> _spot = spotRepository.findBySpName(name);
-        if (!_spot.isPresent()) throw
-                new NotFoundException("" + name, "Spot", "id");
-        else
-            return _spot.get();
+        Optional<String> _spot = spotRepository.findBySpName(name);
+        return _spot.orElse("0");
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
